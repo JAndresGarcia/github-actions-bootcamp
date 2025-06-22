@@ -17,3 +17,9 @@ test("Multiply two numbers working correctly", () => {
 
     expect(result).toBe(100);
 })
+
+test("Hello, this is a test", () => {
+    const result = "Hola";
+
+    expect(result).toBe("Hola")
+})
