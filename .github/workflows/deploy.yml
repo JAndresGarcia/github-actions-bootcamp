@@ -25,7 +25,7 @@ jobs:
 
       - name: Take variable value
         if: ${{ steps.finalStep.outputs.externalVariable == 'Hola' }}
-        run: echo "Value sucessfully taked = $steps.finalStep.outputs.externalVariable"
+        run: echo "Value sucessfully taked = ${{ steps.finalStep.outputs.externalVariable }}"
 
   verify-deploy:
     runs-on: ubuntu-latest
