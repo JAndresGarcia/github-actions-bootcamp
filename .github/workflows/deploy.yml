@@ -9,6 +9,9 @@ jobs:
   deploy-to-prod:
     runs-on: ubuntu-latest
 
+    outputs:
+      first_job: ${{ steps.finalStep.outputs.externalVariable }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,10 +37,15 @@ jobs:
     env:
       NODE_ENV: production
       GITHUB_TOKEN: secretToken123
+      FIRST_JOB_VALUE: ${{ needs.deploy-to-prod.outputs.first_job }}
 
     steps:
       - name: Verify deployment
         run: echo "Verified Step"
+
+      - name:
+        if: ${{ env.FIRST_JOB_VALUE == 'Hola' }}
+        run: echo "Sucessfully context = ${{ env.FIRST_JOB_VALUE }}"
       
       - name: Notify success
         if: ${{ env.NODE_ENV == 'production' }}
