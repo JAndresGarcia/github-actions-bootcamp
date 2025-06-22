@@ -21,7 +21,7 @@ jobs:
 
       - name: Share result with another job
         id: finalStep
-        run: echo "externalVariable=Hola" >> $GITHUB_OUTPUT
+        run: echo "externalVariable=Holas" >> $GITHUB_OUTPUT
 
       - name: Take variable value
         if: ${{ steps.finalStep.outputs.externalVariable == 'Hola' }}
